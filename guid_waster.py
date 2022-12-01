@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from mastodon import Mastodon
-import json, logging, schedule, time
+import json, logging, schedule, time, uuid
 
 _client: Mastodon = None  # type: ignore
 
@@ -30,29 +30,12 @@ def client_start():
 	if _client is None:
 		_client = create()
 
-def get_display() -> str:
-	global current
-	formatted = ""
-	index = 0
-	for d in current:
-		if index in (8, 12, 16, 20):
-			formatted += "-"
-		# display single digit in hex
-		formatted += format(d, "1X")
-		index += 1
-	return formatted
-
 def guid_count_post():
-	# get display formatted guid
-	logging.info("formatting: %s", current)
-	toot_text = get_display()
-	logging.info("formatted: %s", toot_text)
-
 	# make sure client exists
 	client_start()
+	toot_text = str(uuid.uuid4())
+	logging.info("Wasting %s", toot_text)
 	_client.status_post(toot_text)
-	# increment guid
-	increment()
 
 def scheduler_start():
 	logging.info("Starting scheduler")
