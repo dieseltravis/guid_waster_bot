@@ -1,0 +1,16 @@
+[Unit]
+Description=GUID Waster the Mastodon robot
+After=network.target
+ 
+[Service]
+Type=simple
+ExecStart=python3 /home/pi/guid_waster_bot/guid_waster.py
+WorkingDirectory=/home/pi/guid_waster_bot
+User=pi
+Restart=on-failure
+SyslogIdentifier=guid_waster.txt
+RestartSec=5
+TimeoutStartSec=infinity
+ 
+[Install]
+WantedBy=multi-user.target

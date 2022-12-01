@@ -1,0 +1,2 @@
+Mastodon.py==1.7.0
+schedule==1.1.0

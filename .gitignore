@@ -127,3 +127,12 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+.vscode
+
+# guid_waster
+.config
+guid.json
+.clientcred.secret
+.usercred.secret
+guid_waster.log
